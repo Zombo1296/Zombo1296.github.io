@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+  </script>
+  <style>
+    html,
+    body,
+    #myChart {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .zc-ref {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='myChart'><a class="zc-ref" href="https://www.zingchart.com/">Powered by ZingChart</a></div>
+  <script>
+    var myConfig = {
+      type: 'chord',
+      "options": {
+        "angle-padding": 1,
+        "color-type": "palette",
+        "palette": [
+          "#F44336",
+          "#E91E63",
+          "#9C27B0",
+          "#673AB7",
+          "#3F51B5",
+          "#2196F3",
+          "#03A9F4",
+          "#00BCD4",
+          "#009688",
+          "#4CAF50",
+          "#8BC34A",
+          "#CDDC39",
+          "#FFEB3B",
+          "#FFC107",
+          "#FF9800",
+          "#FF5722"
+        ],
+        "style": {
+          "label": {
+            "visible": false
+          }
+        }
+      },
+      // Specify your chart type here. 
+      series: [{
+        values: [
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Major donors"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "New mixed giver"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "New COG"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Active mixed giver"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Active COG"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "New cash"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Lapsing COG active cash"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Lapsing COG"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Active cash"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Active action"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Lapsed COG"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Lapsed cash"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Lapsed action"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Emailable"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          0
+        ],
+        "text": "Other"
+      }, {
+        values: [
+          28,
+          40,
+          39,
+          36,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89,
+          35,
+          42,
+          67,
+          89
+        ],
+        "text": "New contact"
+      }]
+    };
+
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: '100%',
+      width: '100%'
+    });
+  </script>
+</body>
+
+</html>
