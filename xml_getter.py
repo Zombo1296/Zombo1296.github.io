@@ -1,4 +1,4 @@
-# to get sitemap.xmls
+# to get sitemap.xmls for wget to download
 from xml.dom.minidom import parse
 import xml.dom.minidom
 
