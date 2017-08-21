@@ -1,389 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="website of Stock News Sentiment Analysis">
+    <meta name="author" content="Bohan">
+
+    <title>Stock News Sentiment Analysis(v0.2.3)</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/the-big-picture.css" rel="stylesheet">
+
+     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
   <script>
     zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
     ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
   </script>
-  <style>
-    html,
-    body,
-    #myChart {
-      height: 100%;
-      width: 100%;
-    }
-    
-    .zc-ref {
-      display: none;
-    }
-  </style>
+  <style></style>
+
 </head>
 
 <body>
-  <div id='myChart'><a class="zc-ref" href="https://www.zingchart.com/">Powered by ZingChart</a></div>
-  <script>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+        <a class="navbar-brand" href="#">Bohan-project3</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Github <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Raw Data Sample</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Python Code</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="mt-5">Stock News Sentiment Analysis(v0.2.3)</h1>
+                    <h2>Compared to Historical Stock Price</h2>
+                    <p>This is a demo showing historical stock price from Oct to Dec, 2016(fiannce.google) and the sentiment analysis for news text data from seekingalpha.com.
+                    Due to limitation of the server http request(429 error) and my python crawler's effiency, this is the most presentatble data even though I have accumulated unique 1300+ news regarding AMD from seekinalpha.com. I have already crawled 40,000 pages from CNBC but the stock news yield is very low(less than 20%) not to mention news about AMD. To be improved.</p>
+                </div>
+            </div>
+            <div id='myChart'></div>
+        </div>
+    </section>
+
+    <section><div class="container"><div class="row"><div class="col-lg-12"><p>I don't own any copyright of the news content. All rights belong to <a href="https://seekingalpha.com/">seekingalpha.com</a></p></div></div></div></section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script>
     var myConfig = {
-      type: 'chord',
-      "options": {
-        "angle-padding": 1,
-        "color-type": "palette",
-        "palette": [
-          "#F44336",
-          "#E91E63",
-          "#9C27B0",
-          "#673AB7",
-          "#3F51B5",
-          "#2196F3",
-          "#03A9F4",
-          "#00BCD4",
-          "#009688",
-          "#4CAF50",
-          "#8BC34A",
-          "#CDDC39",
-          "#FFEB3B",
-          "#FFC107",
-          "#FF9800",
-          "#FF5722"
-        ],
-        "style": {
+      "layout": "2x1",
+      "graphset": [{
+        "type": "area",
+        "zoom": {
+          "shared": true,
+          "background-color": "#3399ff"
+        },
+        "scale-x": {
+          "values": ["Oct-1","Oct-2","Oct-3","Oct-4","Oct-5","Oct-6","Oct-7","Oct-8","Oct-9","Oct-10","Oct-11","Oct-12","Oct-13","Oct-14","Oct-15","Oct-16","Oct-17","Oct-18","Oct-19","Oct-20","Oct-21","Oct-22","Oct-23","Oct-24","Oct-25","Oct-26","Oct-27","Oct-28","Oct-29","Oct-30","Oct-31","Nov-1","Nov-2","Nov-3","Nov-4","Nov-5","Nov-6","Nov-7","Nov-8","Nov-9","Nov-10","Nov-11","Nov-12","Nov-13","Nov-14","Nov-15","Nov-16","Nov-17","Nov-18","Nov-19","Nov-20","Nov-21","Nov-22","Nov-23","Nov-24","Nov-25","Nov-26","Nov-27","Nov-28","Nov-29","Nov-30","Dec-1","Dec-2","Dec-3","Dec-4","Dec-5","Dec-6","Dec-7","Dec-8","Dec-9","Dec-10","Dec-11","Dec-12","Dec-13","Dec-14","Dec-15","Dec-16","Dec-17","Dec-18","Dec-19","Dec-20","Dec-21","Dec-22","Dec-23","Dec-24","Dec-25","Dec-26","Dec-27","Dec-28","Dec-29","Dec-30"],
+          "zooming": true,
           "label": {
-            "visible": false
+            text: '2016-Dates',
+            fontColor: 'black',
+            fontFamily: 'Georgia',
+            fontSize: 10,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            padding: '2px 10px'
+          },
+         
+          "item": {
+            "font-size": 8
+          }
+        },
+        "scale-y": {
+          "values": "4:14:9",
+          "label": {
+            text: 'Price',
+            fontColor: 'black',
+            fontFamily: 'Georgia',
+            fontSize: 10,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            padding: '2px 2px'
+          },
+          "item": {
+            "font-size": 10
+          }
+        },
+        "plot": {
+          "line-color": "#3399ff",
+          "marker": {
+            "background-color": "#3399ff"
+          }
+        },
+        "plotarea": {
+          "margin": "dynamic"
+        },
+        "series": [{
+          "values": [
+            6.91,6.91,6.95,6.97,6.78,6.96,6.75,6.75,6.75,6.84,6.5,6.62,6.49,6.75,6.75,6.75,6.67,6.73,6.77,6.96,6.52,6.52,6.52,7.0,7.5,7.29,7.11,7.2,7.2,7.2,7.23,7.09,6.76,6.7,6.56,6.56,6.56,6.96,7.0,6.94,6.3,6.68,6.68,6.68,6.79,6.97,7.67,8.46,8.71,8.71,8.71,8.94,8.69,8.8,8.8,8.77,8.77,8.77,8.83,8.93,8.91,8.39,8.53,8.53,8.53,8.68,9.45,9.56,10.34,10.34,10.34,10.34,10.68,10.54,10.55,10.86,10.66,10.66,10.66,10.95,11.51,11.47,11.6,11.58,11.58,11.58,11.58,12.07,11.55,11.59,11.34
+          ],
+          "marker":{
+              "type": "circle",
+              "size": 3
+            },
+        }]
+      }, {
+        "type": "scatter",
+        "legend":{},
+        "zoom": {
+          "shared": true,
+          "background-color": "#ff0080"
+        },
+        "scale-x": {
+          "values": [1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230],
+          "zooming": true,
+          "label": {
+            text: '2016-Dates(Converted)',
+            fontColor: 'black',
+            fontFamily: 'Georgia',
+            fontSize: 10,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            padding: '2px 10px'
+          },
+          "item": {
+            "font-size": 10
+          }
+        },
+        "scale-y": {
+          "label": {
+            text: 'Sentiment Score',
+            fontColor: 'black',
+            fontFamily: 'Georgia',
+            fontSize: 10,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            padding: '2px 10px'
+          },
+          "item": {
+            "font-size": 10
+          }
+        },
+       
+        "series": [
+        {
+          "values": [
+            [1001,0.073434654],[1001,0.115153363],[1005,0.134131155],[1008,0.211285093],[1008,0.034491342],[1011,0.10944632],[1013,0.114479067],[1017,0.157825521],[1018,0.124385198],[1019,0.180071179],[1020,0.165935458],[1020,0.139091464],[1020,0.181422286],[1021,0.118401382],[1021,0.140124498],[1021,0.150769795],[1021,0.215215833],[1021,0.112238613],[1022,0.151368076],[1022,0.081057055],[1022,0.076799493],[1022,0.131976142],[1024,0.113743769],[1024,0.129204668],[1024,0.125883643],[1024,0.187491545],[1025,0.123536036],[1102,0.063514578],[1108,0.128443681],[1112,0.099332351],[1114,0.082929634],[1117,0.10575105],[1117,0.088949201],[1119,0.171476471],[1122,0.092751528],[1123,0.075407596],[1125,0.11697665],[1125,0.067885734],[1127,0.128800274],[1129,0.104412992],[1129,0.204701672],[1129,0.149249639],[1130,0.099556489],[1130,0.207638889],[1130,0.206518375],[1130,0.199015056],[1204,0.186075408],[1205,0.133100744],[1207,0.034362528],[1207,0.066828537],[1207,0.069085897],[1208,0.171192995],[1209,0.153818175],[1210,0.163795839],[1210,0.123998133],[1211,0.195785569],[1211,0.139717262],[1211,0.054994278],[1212,0.127348485],[1212,0.127424487],[1213,0.107420307],[1214,0.120802621],[1214,0.217465192],[1215,0.036190476],[1220,0.108496873],[1225,0.13806703],[1225,0.059672217],[1226,0.107594386],[1226,0.118092504],[1228,0.161728564],[1229,0.095648401]
+          ],
+          "text" : "Positive",
+          "marker":{
+              "type": "circle",
+              "size": 3
+            },
+            "legendMarker": {
+            size: 3,
+            type: "circle",
+          }
+        },
+        {"values": [
+            [1005,-0.074837662],[1005,-0.115260382],[1010,-0.043471142],[1019,-0.099556489],[1025,-0.075153686],[1204,-0.065935458],[1212,-0.028739822],[1002,null],[1003,null],[1004,null],[1006,null],[1007,null],[1009,null],[1012,null],[1014,null],[1015,null],[1016,null],[1023,null],[1026,null],[1027,null],[1028,null],[1029,null],[1030,null],[1031,null],[1101,null],[1103,null],[1104,null],[1105,null],[1106,null],[1107,null],[1109,null],[1110,null],[1111,null],[1113,null],[1115,null],[1116,null],[1118,null],[1120,null],[1121,null],[1124,null],[1126,null],[1128,null],[1201,null],[1202,null],[1203,null],[1206,null],[1216,null],[1217,null],[1218,null],[1219,null],[1221,null],[1222,null],[1223,null],[1224,null],[1227,null],[1230,null]
+          ],
+          "text" : "Negative",
+          "marker":{
+              "type": "triangle",
+              "size": 3
+            },
+          "legendMarker": {
+            size: 3,
+            type: "triangle",
           }
         }
-      },
-      // Specify your chart type here. 
-      series: [{
-        values: [
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Major donors"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "New mixed giver"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "New COG"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Active mixed giver"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Active COG"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "New cash"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Lapsing COG active cash"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Lapsing COG"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Active cash"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Active action"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Lapsed COG"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Lapsed cash"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Lapsed action"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Emailable"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          0
-        ],
-        "text": "Other"
-      }, {
-        values: [
-          28,
-          40,
-          39,
-          36,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89,
-          35,
-          42,
-          67,
-          89
-        ],
-        "text": "New contact"
-      }]
+        ]
+      }, ]
     };
 
     zingchart.render({
       id: 'myChart',
       data: myConfig,
-      height: '100%',
-      width: '100%'
+      height: 400,
+      width: "100%"
     });
   </script>
+
 </body>
 
 </html>
